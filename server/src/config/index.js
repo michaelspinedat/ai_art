@@ -7,7 +7,8 @@ const config = {
   port: process.env.PORT || 3000,
   mongoUri: process.env.MONGO_URI,
   dbName: process.env.MONGO_DB_NAME,
-  host: process.env.HOST
+  host: process.env.HOST,
+  openaiApiKey: process.env.OPENAI_API_KEY
 }
 
 export { config }
