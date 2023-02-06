@@ -17,7 +17,29 @@ const CreatePost = () => {
 
   const handleSubmit = () => { }
 
-  const generateImage = () => { }
+  const generateImage = async () => {
+    const { prompt } = form
+    if (prompt) {
+      setIsGeneratingImg(true)
+      try {
+        const res = await fetch('http://localhost:8080/api/v1/dalle', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ prompt })
+        })
+        const data = await res.json()
+        setForm(curr => ({ ...curr, photo: `data:image/jpeg;base64,${data.photo}` }))
+      } catch (error) {
+        alert(error)
+      } finally {
+        setIsGeneratingImg(false)
+      }
+    } else {
+      alert('Please enter a prompt')
+    }
+  }
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -81,6 +103,7 @@ const CreatePost = () => {
             type='button'
             onClick={generateImage}
             className='text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center'
+            disabled={isGeneratingImg}
           >
             {isGeneratingImg ? 'Generating...' : 'Generate'}
           </button>
