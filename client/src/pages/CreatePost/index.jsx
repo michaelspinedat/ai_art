@@ -15,7 +15,31 @@ const CreatePost = () => {
   const [isGeneratingImg, setIsGeneratingImg] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = () => { }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const { prompt, photo } = form
+    if (prompt && photo) {
+      setIsLoading(true)
+      try {
+        const res = await fetch('http://localhost:8080/api/v1/posts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(form)
+        })
+
+        await res.json()
+        navigate('/')
+      } catch (error) {
+        alert(error)
+      } finally {
+        setIsLoading(false)
+      }
+    } else {
+      alert('Please enter a prompt and generate an image')
+    }
+  }
 
   const generateImage = async () => {
     const { prompt } = form
