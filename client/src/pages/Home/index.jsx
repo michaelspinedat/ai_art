@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Loader, Card, FormField } from '../../components'
 
 const RenderCards = ({ data, title }) => {
@@ -33,6 +33,18 @@ const Home = () => {
     fetchPosts()
   }, [])
 
+  const filteredPosts = useMemo(() => {
+    const search = searchText.toLowerCase()
+    if (!search) return posts
+
+    const filter = post => post.name.toLowerCase().includes(search) || post.prompt.toLowerCase().includes(search)
+    return posts.filter(filter)
+  }, [searchText, posts])
+
+  const handleSearchChange = e => {
+    setSearchText(e.target.value)
+  }
+
   return (
     <section className='max-w-7xl mx-auto'>
       <div>
@@ -41,7 +53,14 @@ const Home = () => {
       </div>
 
       <div className='mt-16'>
-        <FormField />
+        <FormField
+          labelName='Search posts'
+          type='text'
+          name='text'
+          placeholder='Search posts'
+          value={searchText}
+          handleChange={handleSearchChange}
+        />
       </div>
 
       <div className='mt-10'>
@@ -59,7 +78,7 @@ const Home = () => {
                 <div className='grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3'>
                   {
                     searchText
-                      ? <RenderCards data={posts} title='No search found' />
+                      ? <RenderCards data={filteredPosts} title='No search found' />
                       : <RenderCards data={posts} title='No posts found' />
                   }
                 </div>
