@@ -3,7 +3,7 @@ name: Client Deploy
 on:
   push:
     paths:
-      - "./client/*"
+      - "./client/**"
       - ".github/workflows/client_deploy.yml"
 
 jobs:
@@ -51,9 +51,7 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-20.04
-    defaults:
-      run:
-        working-directory: ./client
+
     if: github.ref == 'refs/heads/main'
 
     steps:
