@@ -2,9 +2,8 @@ name: Client Deploy
 
 on:
   push:
-    paths:
-      - "./client/**"
-      - ".github/workflows/client_deploy.yml"
+    branches:
+      - main
 
 env:
   VITE_SERVER_URI: https://air-art.onrender.com
