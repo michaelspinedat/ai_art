@@ -1,11 +1,11 @@
 import React from 'react'
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { HashRouter, Link, Route, Routes } from 'react-router-dom'
 import { Home, CreatePost } from './pages'
 import { logo } from './assets'
 
 export default function App () {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <header
         className='w-full flex justify-between items-center bg-white sm:px-8 px-4 py-4 border-b border-b-[#E6EBF4]'>
         <Link to='/'>
@@ -20,6 +20,6 @@ export default function App () {
           <Route path='/create-post' element={<CreatePost />} />
         </Routes>
       </main>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
