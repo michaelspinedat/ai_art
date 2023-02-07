@@ -9,5 +9,9 @@
   },
   "dependencies": {
     "file-saver": "^2.0.5"
+  },
+  "scripts": {
+    "lint": "eslint './**/*.{js,jsx}'",
+    "lint:fix": "eslint './**/*.{js,jsx}' --fix"
   }
 }

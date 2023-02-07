@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { Loader, Card, FormField } from '../../components'
+import { config } from '../../config'
 
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0) return data.map(post => <Card key={post._id} {...post} />)
@@ -17,7 +18,7 @@ const Home = () => {
     const fetchPosts = async () => {
       setIsLoading(true)
       try {
-        const res = await fetch('http://localhost:8080/api/v1/posts')
+        const res = await fetch(`${config.serverUri}/api/v1/posts`)
 
         if (res.ok) {
           const result = await res.json()
