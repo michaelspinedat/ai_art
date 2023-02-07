@@ -5,7 +5,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node --watch index"
+    "start": "node index",
+    "start:dev": "node --watch index"
   },
   "dependencies": {
     "cloudinary": "^1.33.0",
