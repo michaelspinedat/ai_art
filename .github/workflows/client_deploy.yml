@@ -6,6 +6,9 @@ on:
       - "./client/**"
       - ".github/workflows/client_deploy.yml"
 
+env:
+  VITE_SERVER_URI: https://air-art.onrender.com
+
 jobs:
   linter:
     runs-on: ubuntu-20.04
@@ -68,5 +71,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: client/dist
-        env:
-          VITE_SERVER_URI: https://air-art.onrender.com
