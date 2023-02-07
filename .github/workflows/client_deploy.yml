@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "./client/*"
-      - ".github/workflows/client_deply.yml"
+      - ".github/workflows/client_deploy.yml"
 
 defaults:
   run:
