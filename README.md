@@ -11,5 +11,5 @@ The deploy was performed using
 - Render for server
 - Github Pages for client
 
-Credits to [JavaScript Mastery](https://youtu.be/EyIvuigqDoA "JavaScript Mastery")
+Credits to [JavaScript Mastery](https://youtu.be/EyIvuigqDoA "JavaScript Mastery") \
 [Demo](https://michaelspinedat.github.io/ai_art/ "Demo")
