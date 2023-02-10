@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  VITE_SERVER_URI: https://air-art.onrender.com
+  VITE_SERVER_URI: ${{ secrets.HOST }}
 
 jobs:
   linter:
